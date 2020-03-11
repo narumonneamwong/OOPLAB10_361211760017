@@ -8,9 +8,53 @@ public class CompanyManagement {
 
         //gat all Employee
         displayAllEmployee(dao);
-        addNewEmployee (dao);
+        //addNewEmployee
+                //addNewEmployee (dao);
+        //find Employee by ID
+                //findEmployeeByID (dao);
+        //update Employee by ID
+                //updateEmployeeByID (dao);
+        //delete Employee by ID
+        deleteEmployeeByID(dao);
+
 
     }//main
+
+    private static void deleteEmployeeByID(employeeDAO dao) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Delete employee with ID: ");
+        int id = Integer.parseInt(sc.nextLine().trim());
+        dao.deleteEmp(id);
+    }
+
+    private static void updateEmployeeByID(employeeDAO dao) {
+        Employee emp = findEmployeeByID2(dao);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Updated new salary for employee ID "
+                +emp.getEmpID()+":");
+        double ns = Double.parseDouble(sc.nextLine().trim());
+        //Updated salary
+        emp.setSalary(ns);
+        dao.updateEmp(emp);
+        System.out.println("Updated employee with ID: "+emp.getEmpID());
+    }
+    private static Employee findEmployeeByID2(employeeDAO dao) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an employee ID: ");
+        int id = Integer.parseInt(sc.nextLine().trim());
+        Employee emp =dao.findEmp(id);
+        System.out.println(emp.toString());
+
+        return emp;
+    }
+
+    private static void findEmployeeByID(employeeDAO dao) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an employee ID: ");
+        int id = Integer.parseInt(sc.nextLine().trim());
+        Employee emp =dao.findEmp(id);
+        System.out.println(emp.toString());
+    }
 
     private static void addNewEmployee(employeeDAO dao) {
         Scanner sc = new Scanner(System.in);
